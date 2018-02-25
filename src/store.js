@@ -28,12 +28,16 @@ export class MainStore {
   }
 // filter -> contains
   @computed get bgColorCssVal() {
+    if(!this.backgroundColor) {
+      return;
+    }
     const bgColor = this.backgroundColor.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i,
     (m, r, g, b) => '#' + r + r + g + g + b + b)
     .substring(1).match(/.{2}/g)
     .map(x => parseInt(x, 16))
     .join(',');  
-    return `rgba(${bgColor} 0.5)`;
+    return `rgba(${bgColor},0.5)`;
+    return '...';
   }
 
   @action async fetchColors() {
@@ -59,7 +63,7 @@ export class MainStore {
   }
 
   @action setbgColor(color) {
-    this.color = color;
+    this.backgroundColor = color;
   }
 
   @action updateSearchInputVal(input) {
