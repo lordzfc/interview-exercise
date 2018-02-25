@@ -11,7 +11,7 @@ export class MainStore {
   @observable state = "pending"
 
   autocomplete() {
-    return this.colors;
+    return this.colors.filter((c)=>c.name.indexOf(this.searchInput) !== -1);
   }
 
   constructor(initData) {
@@ -26,7 +26,7 @@ export class MainStore {
     }
     return this.autocomplete();
   }
-
+// filter -> contains
   @computed get bgColorCssVal() {
     const bgColor = this.backgroundColor.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i,
     (m, r, g, b) => '#' + r + r + g + g + b + b)
