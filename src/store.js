@@ -1,4 +1,4 @@
-import { observable, computed, action } from "mobx";
+import { observable, computed, action, runInAction} from "mobx";
 import fetch from 'cross-fetch';
 
 const COLORS_URL = 'http://www.mocky.io/v2/5a37a7403200000f10eb6a2d';
