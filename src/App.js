@@ -8,17 +8,14 @@ import {Page} from './components/page';
 const store = new MainStore();
 
 class App extends Component {
+  componentDidMount() {
+    if(store.state === 'pending') {
+      store.fetchColors();
+    }
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Page store={store} />
+      <div className="App" style={{background: store.bgColorCssVal}}>
       </div>
     );
   }
