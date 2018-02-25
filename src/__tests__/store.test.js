@@ -26,20 +26,21 @@ describe('MainStore', ()=> {
   const store = new MainStore(colors);
 
   beforeAll(()=> {
-    store.updateSearchInputVal(null);
-  })
+    store.updateSearchInputVal('');
+    store.setbgColor('');
+  });
   
   it('should return an empty array if a searchInput is empty', () => {
     // console.log(this.store);
     store.updateSearchInputVal('');
     
     expect(store.entriesList).toEqual([]);
-  })
+  });
 
   it('should return an empty array if a searchInputs length is less than 2', () => {
     store.updateSearchInputVal('x');
     expect(store.entriesList).toEqual([]);
-  })
+  });
 
   it('should return an array of two elements if a searchInput is "aq"', () => {
     store.updateSearchInputVal('aq');
@@ -54,6 +55,11 @@ describe('MainStore', ()=> {
       }
     ];
     expect(store.entriesList).toEqual(expectedArr);
+  });
+
+  it('should return a proper color in rgba (with 0.5 opacity) if a hexColor is F0F', () => {
+    store.setbgColor('F0F');
+    expect(store.bgColorCssVal).toEqual('rgba(255,0,255,0.5)');
   })
 
 })
