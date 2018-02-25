@@ -39,7 +39,13 @@ export class MainStore {
   @action async fetchColors() {
     this.state = "pending"
       try {
-        const colors = await fetch(COLORS_URL);
+        const res = await fetch(COLORS_URL);
+        
+        if (res.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+
+        const colors = await res.json();
         // after await, modifying state again, needs an actions:
         runInAction(() => {
             this.state = "done";
