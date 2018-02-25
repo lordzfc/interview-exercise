@@ -6,8 +6,6 @@ import {MainStore} from './store';
 import {Page} from './components/page';
 
 const store = new MainStore();
-store.setbgColor('000');
-console.log(store.bgColorCssVal);
 
 class App extends Component {
   render() {
