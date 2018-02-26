@@ -1,7 +1,8 @@
 import { MainStore } from '../store.js';
 // import context from 'jest-plugin-context';
 
-const colors = [{
+const colors = [
+  {
   'name': 'aliceblue',
   'hex': 'f0f8ff'
   },
@@ -20,7 +21,8 @@ const colors = [{
   {
   'name': 'azure',
   'hex': 'f0ffff'
-}];
+  }
+];
 
 describe('MainStore', ()=> {
   const store = new MainStore(colors);
@@ -52,6 +54,21 @@ describe('MainStore', ()=> {
       {
         'name': 'aquamarine',
         'hex': '7fffd4'
+      },
+      {
+        'name': 'antiquewhite',
+        'hex': 'faebd7'
+      }
+    ];
+    expect(store.entriesList).toEqual(expectedArr);
+  });
+
+  it('should return one element if a searchInput is "ati"', () => {
+    store.updateSearchInputVal('ati');
+    const expectedArr = [
+      {
+        'name': 'antiquewhite',
+        'hex': 'faebd7'
       }
     ];
     expect(store.entriesList).toEqual(expectedArr);
