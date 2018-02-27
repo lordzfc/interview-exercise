@@ -1,0 +1,11 @@
+.search {
+  width: 25%;
+  margin: 0 auto;
+}
+.search input {
+  width: 100%;
+}
+
+.search .header {
+  text-align: center;
+}

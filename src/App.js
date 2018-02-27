@@ -17,7 +17,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App" style={{background: store.bgColorCssVal}}>
+      <div className="app" style={{background: store.bgColorCssVal}}>
         <Search store={store} />
       </div>
     );
