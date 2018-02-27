@@ -5,7 +5,7 @@ export const Entries = observer(({store}) => {
   return (
     <ul>
       {store.entriesList.map(
-        e => <li>{e.name} <button onClick={store.setbgColor.bind(this, e.hex)}>Accept</button></li>
+        (e, i) => <li key={i}>{e.name} <button onClick={evt => store.setbgColor(e.hex)}>Accept</button></li>
       )}
     </ul>
   );

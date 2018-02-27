@@ -67,7 +67,6 @@ export class MainStore {
     .map(x => parseInt(x, 16))
     .join(',');  
     return `rgba(${bgColor},0.5)`;
-    return '...';
   }
 
   @action async fetchColors() {
@@ -93,6 +92,9 @@ export class MainStore {
   }
 
   @action setbgColor(color) {
+    if(!color.includes('#')) {
+      color = '#' + color;
+    }
     this.backgroundColor = color;
   }
 
